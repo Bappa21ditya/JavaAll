@@ -89,3 +89,107 @@ public class ArrayListOperationsExample {
         }
     }
 }
+
+
+=====================================
+
+My Example
+package arrayList;
+
+import java.util.*;
+
+public class TestArrays {
+    public static  void main(String[] args)
+    {
+//        int n;
+//        Scanner sc=new Scanner(System.in);
+//        System.out.println("Enter the Number");
+//        n=sc.nextInt();
+//        ArrayList<Integer> numbers=new ArrayList<>();
+//
+//        for(int i=1;i<=n;i++)
+//        {
+//            numbers.add(i*10);
+//        }
+//        Iterator it=numbers.iterator();
+//        while(it.hasNext())
+//        {
+//            System.out.println(it.next());
+//        }
+
+        //
+        ArrayList<Integer> num1=new ArrayList<>();
+        num1.add(1);
+        num1.add(2);
+        num1.add(3);
+   // for printing the list [1, 2, 3] this format
+//        System.out.println(num1);
+
+        num1.add(1,10);
+//        System.out.println(num1);
+
+        // output [1, 10, 2, 3] result .in java array index start form 0 th position
+
+        // Removing an element at a specific index
+//        num1.remove(2);
+
+
+        // Removing all elements from another collection the elements we want to remove manually
+//        Collection<Integer> num2=Arrays.asList(1,10,2);
+//        System.out.println(num2);
+//        System.out.println(num1);
+
+//        num1.removeAll(num2);
+//        System.out.println("After removing all elements from another collection: " + num1);
+
+// it will remove all the elements form the list
+      //  num1.clear();
+
+// Getting an element at a specific index
+        Integer element=num1.get(0);
+        System.out.println(element);
+
+// Finding the index of a specific element
+
+        //Integer index=num1.indexOf(10);
+        //System.out.println(index);
+
+        // Finding the last index of a specific element
+        //Integer lastIndex=num1.lastIndexOf(1);
+
+        // Creating a sub-list of elements
+        System.out.println(num1);
+//        ArrayList<Integer> newnumlist=new ArrayList<>(num1.subList(0,2));
+//        System.out.println(newnumlist);
+// Replacing an element at a specific index
+        num1.set(0,11);
+        System.out.println( "After replacing element at index 0 with 11: "+num1);
+
+        // Checking the size of the ArrayList
+        int size =num1.size();
+        System.out.println("Size of the ArrayList: " + size);
+
+        // Checking if the ArrayList is empty
+        boolean isEmpty = num1.isEmpty();
+        System.out.println("Is the ArrayList empty? " + isEmpty);
+
+        // Checking if the ArrayList contains a specific element
+        boolean contains = num1.contains(11);
+        System.out.println("Does the ArrayList contain 'dog'? " + contains);
+
+        // Converting the ArrayList to an array
+        Object[] array = num1.toArray();
+        System.out.println("ArrayList as an array: " + Arrays.toString(array));
+
+        // Creating an iterator over the elements of the ArrayList
+        Iterator<Integer> it=num1.iterator();
+        System.out.println("Elements of the ArrayList using iterator:");
+        while (it.hasNext())
+        {
+            System.out.println(it.next());
+        }
+
+
+    }
+}
+
