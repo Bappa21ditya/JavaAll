@@ -1,0 +1,91 @@
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Collection;
+import java.util.Iterator;
+
+public class ArrayListOperationsExample {
+    public static void main(String[] args) {
+        // Creating a new ArrayList of strings
+        ArrayList<String> list = new ArrayList<>();
+
+        // Adding elements to the ArrayList
+        list.add("apple");
+        list.add("banana");
+        list.add("orange");
+        System.out.println("After adding elements: " + list);
+
+        // Inserting an element at a specific index
+        list.add(1, "grape");
+        System.out.println("After inserting an element at index 1: " + list);
+
+        // Adding all elements from another collection
+        Collection<String> fruits = Arrays.asList("kiwi", "mango", "pineapple");
+        list.addAll(fruits);
+        System.out.println("After adding all elements from another collection: " + list);
+
+        // Removing an element at a specific index
+        list.remove(2);
+        System.out.println("After removing an element at index 2: " + list);
+
+        // Removing a specific element
+        list.remove("banana");
+        System.out.println("After removing an element 'banana': " + list);
+
+        // Removing all elements from another collection
+        Collection<String> removeFruits = Arrays.asList("kiwi", "mango", "pineapple");
+        list.removeAll(removeFruits);
+        System.out.println("After removing all elements from another collection: " + list);
+
+        // Clearing the ArrayList
+        list.clear();
+        System.out.println("After clearing the ArrayList: " + list);
+
+        // Adding elements to the cleared ArrayList
+        list.add("dog");
+        list.add("cat");
+        System.out.println("After adding elements to the cleared ArrayList: " + list);
+
+        // Getting an element at a specific index
+        String element = list.get(1);
+        System.out.println("Element at index 1: " + element);
+
+        // Finding the index of a specific element
+        int index = list.indexOf("cat");
+        System.out.println("Index of 'cat': " + index);
+
+        // Finding the last index of a specific element
+        index = list.lastIndexOf("cat");
+        System.out.println("Last index of 'cat': " + index);
+
+        // Creating a sub-list of elements
+        ArrayList<String> subList = new ArrayList<>(list.subList(0, 1));
+        System.out.println("Sub-List of first element: " + subList);
+
+        // Replacing an element at a specific index
+        list.set(1, "bird");
+        System.out.println("After replacing element at index 1 with 'bird': " + list);
+
+        // Checking the size of the ArrayList
+        int size = list.size();
+        System.out.println("Size of the ArrayList: " + size);
+
+        // Checking if the ArrayList is empty
+        boolean isEmpty = list.isEmpty();
+        System.out.println("Is the ArrayList empty? " + isEmpty);
+
+        // Checking if the ArrayList contains a specific element
+        boolean contains = list.contains("dog");
+        System.out.println("Does the ArrayList contain 'dog'? " + contains);
+
+        // Converting the ArrayList to an array
+        Object[] array = list.toArray();
+        System.out.println("ArrayList as an array: " + Arrays.toString(array));
+
+        // Creating an iterator over the elements of the ArrayList
+        Iterator<String> iterator = list.iterator();
+        System.out.println("Elements of the ArrayList using iterator:");
+        while (iterator.hasNext()) {
+            System.out.println(iterator.next());
+        }
+    }
+}
