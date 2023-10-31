@@ -1,0 +1,202 @@
+1.What is Spring Boot?
+Spring Boot is called a microservice framework that is built on top of the spring framework. This can help developers to focus more on convention rather than configuration.
+
+The main aim of Spring boot is to give you a production-ready application. So, the moment you create a spring-boot project, it is runnable and can be executed/deployed on the server. 
+It comes with features like autoconfiguration, auto dependency resolution, embedded servers, security, health checks which enhances the productivity of a developer.
+
+  2.What is actuator in spring boot?
+An actuator is one of the best parts of spring boot which consists of production-ready features to help you monitor and manage your application.
+  3.What is JPA in spring boot?
+JPA is basically Java Persistence API. It’s a specification that lets you do ORM when you are connecting to a relational database which is Object-Relational Mapping. 
+So, when you need to connect from your java application to relational database, you need to be able to use something like JDBC and run SQL queries and then you get the results and convert them into Object instances. 
+ORM lets you map your entity classes in your SQL tables so that when you connect to the database , you don’t need to do query yourself, it’s the framework that handles it for you.
+And JPA is a way to use ORM, it’s an API which lets you configure your entity classes and give it to a framework so that the framework does the rest.
+  4. What is auto configuration in spring boot?
+AutoConfiguration is a process by which Spring Boot automatically configures all the infrastructural beans. It declares the built-in beans/objects of the spring specific module such as JPA, spring security and so on based on the dependencies present in your applications class path.
+
+For example: If we make use of Spring JDBC, the spring boot autoconfiguration feature automatically registers the DataSource and JDBCTemplete bean.
+This entire process of automatically declaring the framework specific bean without the need of writing the xml code or java config code explicity  is called Autoconfiguration which is done by springBoot with the help of an annotation called @EnableAutoconfiguration alternatively @SpringBootApplication.
+ 5. What is dependency injection in spring boot?
+Dependency injection is a way through which the Spring container injects one object into another. This helps for loose coupling of components.
+
+For example: if class student uses functionality of department class, then we say student class has dependency of Department class.
+  Now we need to create object of class Department in your student class so that it can directly use functionalities of department class is called dependency injection.
+  
+ What are the @RequestMapping and @RestController annotation in Spring Boot used for?
+The @RequestMapping annotation can be used at class-level or method level in your controller class.
+
+The global request path that needs to be mapped on a controller class can be done by using @RequestMapping at class-level. If you need to map a particular request specifically to some method level.
+
+Below is a simple example to refer to:
+
+@RestController
+@RequestMapping("/greatLearning")
+public class GreatLearningController {
+@RequestMapping("/")
+String greatLearning(){
+return "Hello from greatLearning ";
+}
+@RequestMapping("/welcome")
+String welcome(){
+return "Welcome from GreatLearning";
+}
+}
+The @RestController annotation is used at the class level.
+
+You can use @RestController when you need to use that class as a request handler class.All the requests can be mapped and handled in this class.
+
+@RestController itself consists @Controller and @ResponseBody which helps us to remove the need of annotating every method with @ResponseBody annotation.
+
+Below is a simple example to refer to for use of @RestController annotation:
+
+@RestController
+@RequestMapping(“bank-details”)
+public class DemoRestController{
+@GetMapping(“/{id}”,produces =”application/json”)
+public Bank getBankDetails(@PathVariable int id){
+return findBankDetailsById();
+}
+}
+Here, @ResponseBody is not required as the class is annotated with @RestController.
+
+25. What do you understand  by auto-configuration in Spring Boot and how to disable the auto-configuration?
+AutoConfiguration is a process by which Spring Boot automatically configures all the infrastructural beans. It declares the built-in beans/objects of the spring-specific module such as JPA, spring-security, and so on based on the dependencies present in your application’s classpath.
+For example: If we make use of Spring JDBC, the spring boot autoconfiguration feature automatically registers the DataSource and JDBCTemplete bean.
+This entire process of automatically declaring the framework-specific bean without the need of writing the XML code or java-config code explicitly  is called Autoconfiguration which is done by spring-boot with the help of an annotation called @EnableAutoconfiguration alternatively @SpringBootApplication.
+
+1. You can exclude the attribute of @EnableAutoConfiguration where you don’t want it to be configured implicity in order to disable the spring boot’s auto-configuration feature.
+
+2. Another way of disabling auto-configuration is by using the property file:
+
+For example: 
+
+spring.autoconfigure.exclude= 
+org.springframework.boot.autoconfigure.mongo.MongoAutoConfiguration,
+org.springframework.boot.autoconfigure.data.MongoDataConfiguration,
+In the above example, we have disabled the autoconfiguration of MongoDB.
+
+26. Can you give an example for ReadOnly as true in Transaction management?
+Yes, example for ReadOnly as true in Transaction Management is:
+
+Suppose you have a scenario where you have to read data from your database like if you have a STUDENT database and you have to read the student details such as studentID, and studentName.
+
+ So in such scenarios, you will have to set read-only on the transaction.
+
+27. Mention the advantages of the YAML file than Properties file and the different ways to load  
+YAML file in Spring boot.
+
+YAML gives you more clarity and is very friendly to humans. It also supports maps, lists, and other scalar types.
+
+YAML comes with hierarchical nature which helps in avoiding repetition as well as indentations.
+
+If we have different deployment profiles such as  development, testing, or production and we may have different configurations for each environment, so instead of creating new files for each environment we can place them in a single YAML file.
+But in the case of the properties file, you cannot do that.
+
+For example: 
+
+spring:
+profiles:
+active:
+-test
+---
+spring:
+profiles:
+active:
+-prod
+---
+spring:
+profiles:
+active:
+-development
+28. What do you understand by Spring Data REST?
+By using Spring Data Rest, you have access to all the RESTful resources that revolves around Spring Data repositories.
+
+Refer the below example:
+
+@RepositoryRestResource(collectionResourceRel = "greatlearning", path = "sample")
+public interface GreatLearningRepo extends CustomerRepository< greatlearning, Long> {
+}
+Now you can use the POST method in the below manner:
+
+{
+“Name”:”GreatLearning”
+}
+And you will get response as follow:
+
+{
+“Name”:”GreatLearning”
+}
+__________
+{
+"name": "Hello greatlearning "
+"_links": {
+"self": {
+"href": "<a href="http://localhost:8080/sample/1">http://localhost:8080/ greatlearning /1</a>"
+},
+" greatlearning ": {
+“href": "<a href="http://localhost:8080/sample/1">http://localhost:8080/ greatlearning /1</a>"
+}
+}
+In the above, you can see the response of the newly created resource.
+
+29. What do you think is the need for Profiles?
+The application has different stages-such as the development stage, testing stage, production stage and may have different configurations based on the environments.
+
+With the help of spring boot, you can place profile-specific properties in different files such as
+
+application-{profile}.properties
+
+In the above, you can replace the profile with whatever environment you need, for example, if it is a development profile, then application-development.properties file will have development specific configurations in it.
+
+So, in order to have profile-specific configurations/properties, you need to specify an active profile.
+
+30. How to insert data in mysql using spring boot?
+First configure mysql in your spring boot application.
+
+Then you can map your entities with your db tables using JPA.
+
+And with the help of save() method in JPA, you can directly insert your data into your database.
+
+@RestController
+@RequestMapping("/greatleasrning")
+public class Controller {
+@Autowired
+private final GreatLearningRepository greatLearningRepository;
+public Controller(GreatLearningRepository greatLearningRepository) {
+this. greatLearningRepository = greatLearningRepository;
+}
+In the above case, your data which may be in JSON format can be inserted successfully into the database.
+
+@RequestMapping(method = RequestMethod.POST)
+ResponseEntity<?> insert(@RequestBody Course course) {
+greatLearningRepository.save(course);
+return ResponseEntity.accepted().build();
+}
+}
+31. How to create a login page in spring boot?
+You can create a simple and default login page in spring boot, you can make use of Spring security. 
+  Spring security secures all HTTP endpoints where the user has to login into the default HTTP form provided by spring.
+
+We need to add spring-boot-starter-security dependency in your pom.xml or build.gradle and a default username and password can be generated with which you can log in.
+
+4. What is the main class in spring boot?
+Usually in java applications, a class that has a main method in it is considered as a main class.
+  Similarly, in spring boot applications main class is the class which has a public static void main() method and which starts up the SpringApplica
+  tionContext.
+  
+  What is an IOC container?
+IoC Container is a framework that is used for implementing automatic dependency injection. It manages object creation and its lifetime. It, it also injects dependencies into the class.
+
+The IoC container is used to create an object of the specified class. It also injects all the dependency objects through a constructor, a property, or a method at run time and disposes it at the appropriate time. With this, one doesn’t have to create and manage objects manually.
+
+All the containers provide easy support for the Dependency Injection lifecycle as below.
+
+Register: The container should know which dependency to instantiate when it encounters a particular type. This process is called registration. 
+
+Resolve: When using the IoC container, the objects need to be created manually. This is done by the container and is called resolution. The container should include some methods to resolve the specified type; the container creates an object of the specified type. It then injects the required dependencies if any and returns the object.
+
+Dispose: The container should manage the lifetime of the dependent objects. IoC containers include different lifetime managers to manage an object’s lifecycle and dispose it.
+15.
+  Spring @Autowired annotation is used for automatic dependency injection. Spring framework is built on dependency injection and we inject the class dependencies through spring bean configuration file.
+  
+  
