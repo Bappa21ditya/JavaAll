@@ -1,0 +1,111 @@
+Thread is a Lightweight process
+ helps us to achieve multiprogramming where a program or process can operate more efficiently by executing more than one instruction at a time.
+Thread Life Cycle
+1.New State
+2.Active State (running+runnable)
+3.Waiting/Blocked State
+4.Timed Waiting State
+5.Terminated State
+
+ow to Create a Thread in Java?
+How threads are created in Ja We have seen that there are two methods of creating a thread in Java
+1.Extending Thread Class
+2.Implementing a Runnable interface
+
+Method Name	Usage
+public void run()	    =>        used to act as a thread.
+public void start()    =>     	used to start execution for a thread.
+public void sleep(long milliseconds)	=> used to temporarily terminate the invoking thread's execution for a specified duration of time.
+public void join() =>	used to wait for a thread to die.
+public void join(long milliseconds)	used to wait for a thread to die for a specified duration of time.
+public int getPriority()	used to get the priority of the thread.
+public int setPriority(int priority)	used to set or change the priority of the thread.
+public String getName()	used to get the name of the thread.
+public void setName(String name)	used to set or change the name of the thread.
+public Thread currentThread()	used to get the reference of currently executing thread.
+public int getId()	used to get the id of the thread.
+public Thread. State getState()	used to get the state of the thread.
+public boolean isAlive()	used to check if the thread is alive or not.
+public void yield()	used to temporarily pause the currently executing thread and allow other threads to execute.
+public void stop()	used to check if the thread is a daemon thread.
+public boolean isDaemon()	used to mark the thread as daemon thread.
+public void setDaemon(boolean b)	used to mark the thread as daemon or user thread.
+public void interrupt()	used to make interrupts to the thread.
+public boolean isInterrupted()	used to check if the current thread has been interrupted or not.
+public static boolean interrupted()	used to check if the current thread has been interrupted or not.
+
+https://www.scaler.com/topics/thread-in-java/\
+
+                                                          Synchronization
+
+Synchronization in java: synchronization is the process of controlling the access of multiple threads to any shared resource.
+In the Multithreading concept, multiple threads try to access the shared resources at a time to produce inconsistent results. 
+The synchronization is necessary for reliable communication between threads.
+
+This prevents data corruption and inconsistencies.
+There are two ways to synchronize in Java:
+Synchronized methods:
+When a thread invokes a synchronized method, it automatically acquires the lock for that object and releases it when the thread completes its task.
+Synchronized blocks: A synchronized block is a block of code that is enclosed in a pair of curly braces ({}) and preceded by the synchronized keyword.
+When a thread enters a synchronized block, it acquires the monitor associated with the object, 
+and other threads attempting to enter the same or different block will be blocked until the first thread releases the monitor.
+
+Why we use Synchronization:
+1.Synchronization helps in preventing thread interference.
+2.Synchronization helps to prevent concurrency problems.
+
+Types of Synchronization
+Synchronization is classified into two types
+1.Process Synchronization
+2.Thread Synchronization
+
+
+https://www.mygreatlearning.com/blog/synchronization-in-java/#:~:text=Synchronization%20in%20java%20is%20the,for%20reliable%20communication%20between%20threads.
+
+
+                                                                  Concurrency
+Concurrency problems occur when multiple threads access and modify the same data at the same time. This can lead to unexpected results, such as data corruption or lost updates.
+Here are some common concurrency problems in Java:
+Race conditions:A race condition occurs when two or more threads are trying to access the same data at the same time,
+and at least one of the threads is modifying the data. The outcome of the race condition is unpredictable, and it can lead to data corruption or lost updates.
+
+Deadlocks:A deadlock occurs when two or more threads are waiting for each other to finish. 
+This can happen when one thread is trying to acquire a lock that is already held by another thread.
+
+Livelocks:A livelock is a situation in which two or more threads are running continuously, but they are not making any progress.
+This can happen when two threads are trying to acquire the same lock, but neither thread is able to get the lock.
+
+Here are some tips for avoiding concurrency problems in Java:
+
+Use synchronization to protect shared data:Synchronization is a mechanism that allows you to control access to shared data.
+When you synchronize a piece of data, you are ensuring that only one thread can access it at a time. This can help to prevent race conditions and deadlocks.
+
+Use immutable objects:Immutable objects are objects that cannot be changed. This means that they are safe to share between multiple threads without worrying about race conditions.
+
+Use concurrent collections:Concurrent collections are collections that are designed to be used by multiple threads. 
+These collections typically provide synchronization and other features to help prevent concurrency problems.
+
+Use a thread pool:A thread pool is a group of threads that are managed by the Java runtime environment. 
+Using a thread pool can help you to avoid concurrency problems by ensuring that threads are used efficiently and that they do not compete for resources.
+
+                                                                    Thread interference
+
+Thread interference in Java is a problem that occurs when two or more threads are accessing and modifying the same data at the same time. This can lead to unexpected results, such as data corruption or incorrect values.
+There are a few ways to avoid thread interference in Java:
+Use synchronization:Synchronization is a way to ensure that only one thread can access a piece of data at a time. This can be done using the synchronized keyword or the Lock class.
+Use immutable objects:Immutable objects are objects that cannot be changed once they are created. 
+This means that if two threads are trying to access the same immutable object, they will not be able to modify it.
+Use thread-safe containers:Thread-safe containers are collections that are designed to be accessed by multiple threads without causing interference. 
+Examples of thread-safe containers include synchronizedList(), synchronizedMap(), and ConcurrentHashMap().
+
+It is important to note that thread interference is not always a problem. In some cases, 
+it may be acceptable for two or more threads to access and modify the same data at the same time. However,
+it is important to be aware of the potential problems that can occur if thread interference is not handled properly.
+
+
+
+
+
+ 
+
+
